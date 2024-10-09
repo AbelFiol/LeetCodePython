@@ -2,10 +2,11 @@ from typing import List
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        k = 1  # Initialize the count of unique elements.
-        for i in range(1, len(nums)):
-            if nums[i] != nums[k - 1]:
-                nums[k] = nums[i]
-                k += 1
+        j = 0  # Pointer for the index of unique elements.
 
-        return k
+        for i in range(1, len(nums)):  # Start from the second element.
+            if nums[i] != nums[j]:  # Check if the current element is different from the last unique element.
+                j += 1  # Move the pointer for unique elements forward.
+                nums[j] = nums[i]  # Update the next unique position with the current element.
+
+        return j + 1  # Return the count of unique elements.
